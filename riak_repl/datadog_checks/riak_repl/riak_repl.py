@@ -4,8 +4,8 @@ import unicodedata
 
 from six import iteritems
 
-from datadog_checks.checks import AgentCheck
-from datadog_checks.errors import CheckException
+from datadog_checks.base import AgentCheck
+from datadog_checks.base.errors import CheckException
 
 
 class RiakReplCheck(AgentCheck):
@@ -56,9 +56,6 @@ class RiakReplCheck(AgentCheck):
         "fullsyncs_completed",
         "last_fullsync_duration"
     ]
-
-    def __init__(self, name, init_config, agentConfig, instances=None):
-        AgentCheck.__init__(self, name, init_config, agentConfig, instances)
 
     def check(self, instance):
         url = instance.get('url', '')
